@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Tantawii — game developer portfolio. Walk through a 3D gallery of my games." />
+    <title>Tantawii — Game Portfolio</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+
+      <div id="ui-root">
+        <div id="loading-screen">
+          <div class="loading-inner">
+            <h1>Tantawii</h1>
+            <p class="loading-label">Loading gallery…</p>
+            <div class="loading-bar"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
+          </div>
+        </div>
+
+        <div id="intro-hint" class="hidden">
+          <p><strong>Click</strong> to enter · <strong>WASD</strong> to move · <strong>Mouse</strong> to look · <strong>E</strong> to interact</p>
+        </div>
+
+        <div id="crosshair"></div>
+
+        <div id="interact-prompt" class="hidden"></div>
+
+        <div id="info-panel" class="hidden">
+          <div id="info-panel-card">
+            <button id="info-panel-close" aria-label="Close">✕</button>
+            <h2 id="info-title"></h2>
+            <p id="info-engine"></p>
+            <p id="info-description"></p>
+            <div id="info-tags"></div>
+            <a id="info-link" href="#" target="_blank" rel="noopener">View on itch.io →</a>
+          </div>
+        </div>
+
+        <button id="mobile-interact" class="hidden">Interact</button>
+        <div id="joystick-zone" class="hidden"></div>
+        <div id="look-zone" class="hidden"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,251 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0b0d14;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #eef0f6;
+}
+
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#scene {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#ui-root {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Loading screen */
+#loading-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b0d14;
+  transition: opacity 0.6s ease;
+  pointer-events: auto;
+  z-index: 20;
+}
+
+.loading-inner {
+  text-align: center;
+  width: min(320px, 80vw);
+}
+
+.loading-inner h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.loading-label {
+  margin: 0 0 1rem;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+.loading-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #6c8dff, #a06cff);
+  transition: width 0.2s ease;
+}
+
+/* Intro hint */
+#intro-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 11, 18, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  backdrop-filter: blur(6px);
+}
+
+/* Crosshair */
+#crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+#crosshair.active {
+  background: #ffcf6c;
+  transform: scale(2.2);
+}
+
+/* Interact prompt */
+#interact-prompt {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10, 11, 18, 0.75);
+  border: 1px solid rgba(255, 207, 108, 0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Info panel */
+#info-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 7, 12, 0.6);
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+  z-index: 10;
+}
+
+#info-panel-card {
+  position: relative;
+  width: min(420px, 88vw);
+  background: #14151f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.75rem;
+}
+
+#info-panel-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eef0f6;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#info-panel-close:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+#info-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.4rem;
+}
+
+#info-engine {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a06cff;
+}
+
+#info-description {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+  color: #c7cad6;
+}
+
+#info-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+#info-tags span {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #c7cad6;
+}
+
+#info-link {
+  display: inline-block;
+  color: #ffcf6c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#info-link:hover {
+  text-decoration: underline;
+}
+
+/* Mobile controls */
+#mobile-interact {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 2rem;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 207, 108, 0.18);
+  color: #eef0f6;
+  font-size: 0.85rem;
+  font-weight: 600;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+#joystick-zone {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 45vw;
+  height: 45vh;
+  pointer-events: auto;
+  z-index: 4;
+}
+
+#look-zone {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 55vw;
+  height: 100vh;
+  pointer-events: auto;
+  z-index: 3;
+  touch-action: none;
+}
